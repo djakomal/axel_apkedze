@@ -1,9 +1,12 @@
 import { createClient } from '@supabase/supabase-js';
-
 // Valeurs par défaut pour éviter l'écran de configuration
-let supabaseUrl = 'https://grkuivwoquybkbzgoehz.supabase.co';
-let supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdya3VpdndvcXV5YmtiemdvZWh6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkyNTkxMjUsImV4cCI6MjA3NDgzNTEyNX0.1IZMv_cb1xsAxO0oKp8fpETe1V8735G0E70rGI27NSc';
-const isSupabaseEnvConfigured = true; // Forcer la configuration
+// let supabaseUrl = 'https://grkuivwoquybkbzgoehz.supabase.co';
+// let supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdya3VpdndvcXV5YmtiemdvZWh6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkyNTkxMjUsImV4cCI6MjA3NDgzNTEyNX0.1IZMv_cb1xsAxO0oKp8fpETe1V8735G0E70rGI27NSc';
+// const isSupabaseEnvConfigured = true; // Forcer la configuration
+// Utilisation des variables d'environnement uniquement
+let supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
+let supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+const isSupabaseEnvConfigured = Boolean(supabaseUrl && supabaseKey);
 
 // Secondary sources: window.__APP_CONFIG__ and localStorage (dev-only helpers)
 try {
